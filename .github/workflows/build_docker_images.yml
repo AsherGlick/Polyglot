@@ -30,7 +30,7 @@ jobs:
               LANGUAGE=$(basename $(dirname $(dirname "$FILEPATH")))
 
               # Sanity check directory
-              EXPECTED_PATH="language/${LANGUAGE}/dockerfiles/${DOCKERFILENAME}"
+              EXPECTED_PATH="languages/${LANGUAGE}/dockerfiles/${DOCKERFILENAME}"
               if [[ "$FILEPATH" != "$EXPECTED_PATH" ]]; then
                 echo "The docker file in '$FILEPATH' is not where we expect dockerfiles to be. Skipping"
                 echo "  Expecting a path like: ${EXPECTED_PATH}"
