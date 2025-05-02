@@ -1,0 +1,33 @@
+name: Build Docker Images
+
+on: [push]
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    # outputs
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get changed paths
+        run: |
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+          echo "--"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '/Dockerfile'
+          echo "--"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '/Dockerfile' | cut -d/ -f1
+          echo "--"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '/Dockerfile' | cut -d/ -f1 | sort
+          echo "--"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '/Dockerfile' | cut -d/ -f1 | sort | uniq
+          echo "--"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '/Dockerfile' | cut -d/ -f1 | sort | uniq | jq -R .
+          echo "--"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '/Dockerfile' | cut -d/ -f1 | sort | uniq | jq -R . | jq -s .
+          echo "--"
+          # echo "changed=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '/Dockerfile' | cut -d/ -f1 | sort | uniq | jq -R . | jq -s .)" >> $GITHUB_OUTPUT
+
+
+
+
+# The tag will be the current UTC time unix timestamp
+# date -u +%s
