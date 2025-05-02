@@ -4,5 +4,5 @@ docker run \
 	--rm \
 	--volume "$(pwd)"/src:/app/src:ro \
 	--workdir /app \
-	ubuntu:latest \
+	ghcr.io/asherglick/zsh-alpine:1746157818 \
 	zsh "src/main.sh"
