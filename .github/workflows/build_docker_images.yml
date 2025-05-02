@@ -12,9 +12,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install basename
-        run: sudo apt-get install coreutils
-
       - name: Pull code from previous commit
         run: git fetch origin "${{ github.event.before }}"
 
@@ -26,22 +23,22 @@ jobs:
 
       - name: Get changed paths
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs -n 1 dirname | sort | uniq | while read -r PATH; do
-            if [ -f "$PATH/Dockerfile" ]; then
-              DOCKERFILENAME=$(basename "$PATH")
-              LANGUAGE=$(basename $(dirname $(dirname "$PATH")))
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs -n 1 dirname | sort | uniq | while read -r FILEPATH; do
+            if [ -f "$FILEPATH/Dockerfile" ]; then
+              DOCKERFILENAME=$(basename "$FILEPATH")
+              LANGUAGE=$(basename $(dirname $(dirname "$FILEPATH")))
 
               # Sanity check directory
               EXPECTED_PATH="language/${LANGUAGE}/dockerfiles/${DOCKERFILENAME}"
-              if [[ "$PATH" != "$EXPECTED_PATH" ]]; then
-                echo "The docker file in '$PATH' is not where we expect dockerfiles to be. Skipping"
+              if [[ "$FILEPATH" != "$EXPECTED_PATH" ]]; then
+                echo "The docker file in '$FILEPATH' is not where we expect dockerfiles to be. Skipping"
               fi
 
               DOCKER_NAME="${LANGUAGE}-${DOCKERFILENAME}"
               DOCKER_TAG="$(date -u +%s)"
               IMAGE_ID="ghcr.io/${OWNER_LC}/${DOCKER_NAME}:${DOCKER_TAG}"
               
-              cd $PATH
+              cd $FILEPATH
               docker build . -t "$IMAGE_ID"
               docker push "$IMAGE_ID"
             fi
