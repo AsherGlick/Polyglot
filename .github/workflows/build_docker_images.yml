@@ -43,6 +43,3 @@ jobs:
               docker push "$IMAGE_ID"
             fi
           done
-
-# The tag will be the current UTC time unix timestamp
-# date -u +%s
