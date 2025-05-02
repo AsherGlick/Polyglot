@@ -12,9 +12,7 @@ jobs:
         run: |
           git fetch origin "${{ github.event.before }}"
 
-          CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs -n 1 dirname | sort | uniq)
-
-          $CHANGED_FILES | while read -r PATH; do
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs -n 1 dirname | sort | uniq | while read -r PATH; do
             echo "=="
             if [ -f "$PATH/Dockerfile" ]; then
               echo "docker File exists. at $PATH"
