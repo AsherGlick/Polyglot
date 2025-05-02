@@ -10,6 +10,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Get changed paths
         run: |
+          git fetch origin "${{ github.event.before }}"
           git diff --name-only ${{ github.event.before }} ${{ github.sha }}
           echo "--"
           git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '/Dockerfile'
