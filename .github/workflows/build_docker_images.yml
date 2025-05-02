@@ -24,6 +24,7 @@ jobs:
       - name: Get changed paths
         run: |
           git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs -n 1 dirname | sort | uniq | while read -r FILEPATH; do
+            echo "Checking if $FILEPATH has a Dockerfile"
             if [ -f "$FILEPATH/Dockerfile" ]; then
               DOCKERFILENAME=$(basename "$FILEPATH")
               LANGUAGE=$(basename $(dirname $(dirname "$FILEPATH")))
@@ -32,8 +33,10 @@ jobs:
               EXPECTED_PATH="language/${LANGUAGE}/dockerfiles/${DOCKERFILENAME}"
               if [[ "$FILEPATH" != "$EXPECTED_PATH" ]]; then
                 echo "The docker file in '$FILEPATH' is not where we expect dockerfiles to be. Skipping"
+                continue
               fi
 
+              echo "Building a Docker Image"
               DOCKER_NAME="${LANGUAGE}-${DOCKERFILENAME}"
               DOCKER_TAG="$(date -u +%s)"
               IMAGE_ID="ghcr.io/${OWNER_LC}/${DOCKER_NAME}:${DOCKER_TAG}"
