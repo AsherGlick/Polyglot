@@ -21,6 +21,7 @@ Languages
 | Haxe                      | haxe                          | https://haxe.org                                |
 | Java                      | openjdk                       | https://java.com                                |
 | Javascript                | node                          |                                                 |
+| Julia                     | julia                         | https://julialang.org/                          |
 | Lua                       | ghcr.io/asherglick/lua-alpine | https://lua.org                                 |
 | Perl                      | perl                          | https://perl.org                                |
 | PHP                       | php                           | https://php.net                                 |
@@ -30,12 +31,10 @@ Languages
 | Zig                       | ghcr.io/asherglick/zig-alpine | https://ziglang.org                             |
 | Zshell (zsh)              | ghcr.io/asherglick/zsh-alpine | https://zsh.org                                 |
 
-
 Primary TODO Languages
 --------------------------------------------------------------------------------
 | Language                  | Link |
 |---------------------------|------|
-| Julia                     |      |
 | Kotlin                    |      |
 | Lisp                      |      |
 | Nim                       |      |
