@@ -1,3 +1,5 @@
+<p align="center"><img src="./logo.png" width="200" /></p>
+
 Polyglot
 ================================================================================
 "Hello World" a popular first program to write when learning a new language.
