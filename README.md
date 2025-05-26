@@ -33,6 +33,7 @@ Languages
 | Zig                       | ghcr.io/asherglick/zig-alpine | https://ziglang.org                             |
 | Zshell (zsh)              | ghcr.io/asherglick/zsh-alpine | https://zsh.org                                 |
 
+
 Primary TODO Languages
 --------------------------------------------------------------------------------
 | Language                  | Container                     | Site                                            |
@@ -47,7 +48,6 @@ Primary TODO Languages
 | Prolog                    | swipl                         | -                                               |
 | R                         | r-base                        | https://r-project.org                           |
 | Ruby                      | ruby                          | https://ruby-lang.org                           |
-
 
 
 Docker Images to Create
@@ -66,8 +66,8 @@ Todo Languages
 | ALGOL                     | -                             | - maybe (https://www.algol60.org/1home.htm)
 | AngelScript               | -                             | https://angelcode.com/angelscript
 | Arduino                   | -                             | https://arduino.cc
-| Assembly                  | -                             | -
 | AssemblyScript            | -                             | https://assemblyscript.org
+| awk                       | -                             | - https://en.wikipedia.org/wiki/AWK
 | BASIC                     | -                             | - https://en.wikipedia.org/wiki/BASIC
 | BrainF\*\*k               | -                             | https://brainfuck.org/
 | CHIP-8                    | -                             | - https://en.wikipedia.org/wiki/CHIP-8
@@ -91,37 +91,30 @@ Todo Languages
 | HLSL (High Level Shader Language) | -                     | https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl
 | J                         | -                             | https://jsoftware.com
 | JOSS                      | -                             | - https://en.wikipedia.org/wiki/JOSS
-| Jq                        | ghcr.io/jqlang/jq:1.7.1       | http://jqlang.org
-| LabView                   |                               |
-| Logo                      |                               |
-| Matlab                    |                               |
-| MUMPS                     |                               |
-| Objective-C               |                               |
-| Ocaml                     |                               |
-| Octave                    |                               |
-| OpenCL                    |                               |
-| Pascal                    |                               |
-| Pico8                     |                               |
-| PL/SQL                    |                               |
-| PostScript                |                               |
-| PowerShell                |                               |
-| Python2                   |                               |
-| QtScript                  |                               |
-| SCAD                      |                               |
-| Scala                     |                               |
-| Scheme                    |                               |
-| Sed                       |                               |
-| Smalltalk                 |                               |
-| SQL                       |                               |
-| Swift                     |                               |
-| TCL                       |                               |
-| Verilog                   |                               |
-| VHDL                      |                               |
-| Vim Script                |                               |
-| Visual Basic              |                               |
-| WebAssembly               |                               |
-| Whitespace                |                               |
-
+| Jq                        | ghcr.io/jqlang/jq             | http://jqlang.org
+| LabView                   | -                             | https://ni.com/labview
+| Matlab                    | mathworks/matlab              | https://mathworks.com/products/matlab.html
+| MUMPS                     | -                             | - https://en.wikipedia.org/wiki/MUMPS
+| Objective-C               | -                             | https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html
+| Ocaml                     | ocaml/opam                    | https://ocaml.org
+| Octave                    | gnuoctave/octave              | https://octave.org
+| OpenCL                    | -                             | https://khronos.org/opencl
+| Pascal                    | -                             | - https://en.wikipedia.org/wiki/Pascal_(programming_language)
+| PL/SQL                    | -                             | https://www.oracle.com/database/technologies/appdev/plsql.html
+| PowerShell                | mcr.microsoft.com/dotnet/sdk  | https://learn.microsoft.com/en-us/powershell/ (docker run -it mcr.microsoft.com/dotnet/sdk:9.0 pwsh)
+| QtScript                  | -                             | -https://en.wikipedia.org/wiki/QtScript
+| Racket                    | -                             | https://racket-lang.org
+| Scala                     | -                             | https://scala-lang.org
+| Scheme                    | -                             | https://scheme.org
+| Smalltalk                 | -                             | - https://en.wikipedia.org/wiki/Smalltalk
+| Swift                     | swift                         | https://www.swift.org
+| TCL                       | -                             | https://tcl-lang.org
+| Verilog                   | -                             | - https://en.wikipedia.org/wiki/Verilog
+| Vim Script                | -                             | - https://en.wikipedia.org/wiki/Vim_(text_editor)#Vim_script
+| Visual Basic              | -                             | https://docs.microsoft.com/dotnet/visual-basic
+| WebAssembly               | -                             | https://webassembly.org
+| Whitespace                | -                             | - https://en.wikipedia.org/wiki/Whitespace_(programming_language)
+| x86 Assembly              | -                             | - https://en.wikipedia.org/wiki/X86_assembly_language
 
 
 Languages where terminal is non-default
@@ -133,7 +126,23 @@ Languages where terminal is non-default
 | JASS           | Blizzard/Warcraft3 Script      |
 | Visual BASIC   | Microsoft's BASIC GUI language |
 | Delphi         | Windows only gui language      | https://www.embarcadero.com/products/delphi
+| Logo           | Line drawing tool              | https://en.wikipedia.org/wiki/Logo_(programming_language)
+| Pico8          | Fantasy Console (uses Lua)     | https://lexaloffle.com/pico-8.php
+| OpenSCAD       | Programataic 3D CFG CAD Lang   | https://openscad.org, https://hub.docker.com/r/openscad/openscad
 
+
+Non Programming Languages
+--------------------------------------------------------------------------------
+| Lanuguage      | Description                  | Site
+|----------------|------------------------------|----------------------------|
+| PostScript     | Data Language                | -https://en.wikipedia.org/wiki/PostScript
+| Sed            | Not Turing Complete?         | -https://en.wikipedia.org/wiki/Sed
+| JSON           | Data Language                |
+| YAML           | Data Language                |
+| XML            | Data Language                |
+| HTML           | Data Language                |
+| SQL            | Query Language               |
+| VHDL           | logic desciption language    | - https://en.wikipedia.org/wiki/VHDL
 
 
 FAQ
@@ -193,6 +202,7 @@ Possible Other Programs
 * Even or Odd
 * Word Counter
 * UTF-8 Box Drawing
+* JSON Parsing / Writing
 
 
 Language Version + Tooling Combinations
@@ -262,11 +272,40 @@ navigating the repo.
 ```
 
 ```json
-"tooling": {
-	"clang": {
-		"20": ["cpp23", "cpp20", "cpp17", "cpp14", "cpp11", "cpp98"],
-		"4": ["cpp14", "cpp11", "cpp98"],
-		"3.3": ["cpp11", "cpp98"],
+"build_systems" [
+	{
+		"name": "cmake3.5",
+		"compilers": ["clang20"],
+		"files": "cmakelists3.5"
+	},
+	{
+		"name": null, // No build system
+		"compilers": ["*"], // Do we want to allow wildcards? Could be helpful in versioning "1.2.*" sort of things
+		"files": null
 	}
-}
+],
+"compilers": [
+	{
+		"name": "clang20",
+		"language_versions": ["cpp23", "cpp20", "cpp17", "cpp14", "cpp11", "cpp98"],
+		"files": null
+	}, {
+		"name": "clang4",
+		"language_versions": ["cpp14", "cpp11", "cpp98"],
+		"files": null
+	}, {
+		"name": "clang3.3",
+		"language_versions": ["cpp11", "cpp98"],
+		"files": null
+	}
+],
+"language_versions": [
+	{ "name": "cpp98", "source": "src1" },
+	{ "name": "cpp11", "source": "src1" },
+	{ "name": "cpp14", "source": "src1" },
+	{ "name": "cpp17", "source": "src2" }, // Code changed between versions
+	{ "name": "cpp20", "source": "src2" },
+	{ "name": "cpp23", "source": "src2" }
+]
+
 ```
